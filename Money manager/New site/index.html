@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Manager - Track Your Expenses</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-thunder">
+    <!-- Thunder Storm Background -->
+    <div class="background">
+        <div class="storm-clouds"></div>
+        <div class="lightning-container">
+            <div class="lightning"></div>
+        </div>
+        <div class="electric-arcs">
+            <div class="arc arc-1"></div>
+            <div class="arc arc-2"></div>
+            <div class="arc arc-3"></div>
+        </div>
+        <div class="rain-effect"></div>
+        <div class="electric-particles"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-bolt"></i>
+                    <h1>⚡ Money Manager</h1>
+                </div>
+                <div class="header-info">
+                    <span>Harness the Power of Your Finances</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </button>
+                <button class="tab-btn" data-tab="add-expense">
+                    <i class="fas fa-plus-circle"></i>
+                    Add Expense
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <i class="fas fa-history"></i>
+                    History
+                </button>
+                <button class="tab-btn" data-tab="budget">
+                    <i class="fas fa-cog"></i>
+                    Budget
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="dashboard-grid">
+                    
+                    <!-- Overview Cards -->
+                    <div class="overview-cards">
+                        <div class="glass-card">
+                            <div class="card-icon">
+                                <i class="fas fa-rupee-sign"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3>Total Spent</h3>
+                                <p class="amount" id="total-spent">₹0.00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <div class="card-icon">
+                                <i class="fas fa-piggy-bank"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3>Budget Remaining</h3>
+                                <p class="amount" id="budget-remaining">₹0.00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <div class="card-icon">
+                                <i class="fas fa-receipt"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3>Total Expenses</h3>
+                                <p class="amount" id="expense-count">0</p>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3>Monthly Income</h3>
+                                <p class="amount" id="monthly-income">₹0.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 50-30-20 Rule Tracker -->
+                    <div class="glass-card budget-tracker">
+                        <h2><i class="fas fa-balance-scale"></i> 50-30-20 Budget Rule</h2>
+                        
+                        <div class="budget-item">
+                            <div class="budget-header">
+                                <span>Needs (50%)</span>
+                                <span class="budget-amount" id="needs-amount">₹0 / ₹0</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill needs" id="needs-progress"></div>
+                            </div>
+                            <span class="budget-percentage" id="needs-percentage">0% used</span>
+                        </div>
+
+                        <div class="budget-item">
+                            <div class="budget-header">
+                                <span>Wants (30%)</span>
+                                <span class="budget-amount" id="wants-amount">₹0 / ₹0</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill wants" id="wants-progress"></div>
+                            </div>
+                            <span class="budget-percentage" id="wants-percentage">0% used</span>
+                        </div>
+
+                        <div class="budget-item">
+                            <div class="budget-header">
+                                <span>Savings (20%)</span>
+                                <span class="budget-amount" id="savings-amount">₹0 / ₹0</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill savings" id="savings-progress"></div>
+                            </div>
+                            <span class="budget-percentage" id="savings-percentage">0% used</span>
+                        </div>
+                    </div>
+
+                    <!-- Category Breakdown -->
+                    <div class="glass-card category-breakdown">
+                        <h2><i class="fas fa-chart-bar"></i> Category Breakdown</h2>
+                        <div class="category-grid">
+                            <div class="category-item">
+                                <h4>Food</h4>
+                                <p class="category-amount" id="food-amount">₹0.00</p>
+                            </div>
+                            <div class="category-item">
+                                <h4>Snacks</h4>
+                                <p class="category-amount" id="snacks-amount">₹0.00</p>
+                            </div>
+                            <div class="category-item">
+                                <h4>College Expenses</h4>
+                                <p class="category-amount" id="college-amount">₹0.00</p>
+                            </div>
+                            <div class="category-item">
+                                <h4>Miscellaneous</h4>
+                                <p class="category-amount" id="misc-amount">₹0.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Expenses -->
+                    <div class="glass-card recent-expenses">
+                        <h2><i class="fas fa-clock"></i> Recent Expenses</h2>
+                        <div id="recent-expenses-list">
+                            <p class="no-data">No expenses yet. Add your first expense!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Expense Tab -->
+            <div id="add-expense" class="tab-content">
+                <div class="glass-card expense-form">
+                    <h2><i class="fas fa-plus-circle"></i> Add New Expense</h2>
+                    <form id="expense-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="expense-date">Date</label>
+                                <input type="date" id="expense-date" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="expense-amount">Amount (₹)</label>
+                                <input type="number" id="expense-amount" placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="expense-category">Category</label>
+                                <select id="expense-category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Snacks">Snacks</option>
+                                    <option value="College Expenses">College Expenses</option>
+                                    <option value="Miscellaneous">Miscellaneous</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="payment-method">Payment Method</label>
+                                <select id="payment-method">
+                                    <option value="UPI">UPI</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Card">Card</option>
+                                    <option value="Net Banking">Net Banking</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expense-description">Description</label>
+                            <textarea id="expense-description" placeholder="What did you spend on?" rows="3" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Add Expense
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history" class="tab-content">
+                <div class="glass-card expense-history">
+                    <h2><i class="fas fa-history"></i> Expense History</h2>
+                    
+                    <!-- Filters -->
+                    <div class="filters">
+                        <div class="filter-group">
+                            <input type="text" id="search-expenses" placeholder="Search expenses...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        
+                        <select id="filter-category">
+                            <option value="">All Categories</option>
+                            <option value="Food">Food</option>
+                            <option value="Snacks">Snacks</option>
+                            <option value="College Expenses">College Expenses</option>
+                            <option value="Miscellaneous">Miscellaneous</option>
+                        </select>
+                        
+                        <select id="sort-expenses">
+                            <option value="date">Sort by Date</option>
+                            <option value="amount">Sort by Amount</option>
+                            <option value="category">Sort by Category</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Expense List -->
+                    <div id="expense-list">
+                        <p class="no-data">No expenses found. Start by adding your first expense!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Tab -->
+            <div id="budget" class="tab-content">
+                <div class="glass-card budget-settings">
+                    <h2><i class="fas fa-cog"></i> Budget Settings</h2>
+                    
+                    <!-- Income Setting -->
+                    <div class="income-section">
+                        <h3>Monthly Income</h3>
+                        <form id="income-form">
+                            <div class="income-input">
+                                <input type="number" id="monthly-income-input" placeholder="Enter your monthly income" min="0" step="0.01" required>
+                                <button type="submit" class="btn-secondary">Update</button>
+                            </div>
+                        </form>
+                        <p class="current-income">Current income: <span id="current-income-display">₹0.00</span></p>
+                    </div>
+                    
+                    <!-- Budget Allocation -->
+                    <div class="budget-allocation">
+                        <h3>Budget Allocation</h3>
+                        <div class="allocation-info">
+                            <div class="allocation-item">
+                                <div class="allocation-header">
+                                    <span>Needs (Food, College Expenses)</span>
+                                    <span class="allocation-amount" id="needs-allocation">₹0.00</span>
+                                </div>
+                                <p>50% of income</p>
+                            </div>
+                            
+                            <div class="allocation-item">
+                                <div class="allocation-header">
+                                    <span>Wants (Snacks, Miscellaneous)</span>
+                                    <span class="allocation-amount" id="wants-allocation">₹0.00</span>
+                                </div>
+                                <p>30% of income</p>
+                            </div>
+                            
+                            <div class="allocation-item">
+                                <div class="allocation-header">
+                                    <span>Savings & Debt</span>
+                                    <span class="allocation-amount" id="savings-allocation">₹0.00</span>
+                                </div>
+                                <p>20% of income</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Success/Error Messages -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
